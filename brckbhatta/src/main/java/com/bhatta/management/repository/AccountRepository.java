@@ -3,11 +3,9 @@ package com.bhatta.management.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bhatta.management.entity.Login;
+import com.bhatta.management.entity.Account;
 
 @Repository
-public interface LoginRepository extends JpaRepository<Login, Long> {
-
-	Login save(Login login);
+public interface AccountRepository extends JpaRepository<Account, Long>{
 
 }

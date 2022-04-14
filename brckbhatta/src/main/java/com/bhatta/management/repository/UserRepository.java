@@ -1,4 +1,4 @@
-package com.bhatta.management.dao;
+package com.bhatta.management.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

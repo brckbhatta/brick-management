@@ -1,14 +1,9 @@
 package com.bhatta.management.enums;
 
 public enum BrickTypeEnum {
-	AVVAL(1,"avval"),
-	LALPETI(2,"lalpeti"),
-	PAKKAPELA(3,"pakkapela"),
-	CHATKA(4,"chatka"),
-	TALSA(5,"talsa"),
-	PELA(6,"pela"),
-	TILE(7,"tile"),
-	HALF(8,"half");
+	KACCHI(1,"KACCHI"),
+	PAKKI(2,"PAKKI");
+	
 	
 	int id;
 	String type;
@@ -21,6 +16,24 @@ public enum BrickTypeEnum {
 	}
 	public String getType() {
 		return type;
+	}
+	
+	public static Integer getIdByType(String type) {
+		for(BrickTypeEnum b:values()) {
+			if(b.getType().equalsIgnoreCase(type)) {
+				return b.getId();
+			}
+		}
+		return null;
+	}
+	
+	public static String getTypeById(int id) {
+		for(BrickTypeEnum b:values()) {
+			if(b.getId()==id) {
+				return b.getType();
+			}
+		}
+		return null;
 	}
 	
 }

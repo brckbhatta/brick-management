@@ -1,7 +1,13 @@
 package com.bhatta.management.entity;
 
-@javax.persistence.Table(name="login")
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Login {
+	
+	@Id
+	private Long id;
 	private String email;
 	private String password;
 	

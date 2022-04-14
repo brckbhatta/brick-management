@@ -2,12 +2,11 @@ package com.bhatta.management.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.bhatta.management.entity.Login;
+import com.bhatta.management.entity.OtpBucket;
 
 @Repository
-public interface LoginRepository extends JpaRepository<Login, Long> {
+public interface OtpBucketRepository extends JpaRepository<OtpBucket, Long> {
 
-	Login save(Login login);
+	OtpBucket findByOtp(String otp);
 
 }
