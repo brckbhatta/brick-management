@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.bhatta.management.dao.UserRepository;
+import com.bhatta.management.repository.UserRepository;
 import com.bhatta.management.entity.User;
 
 @Service

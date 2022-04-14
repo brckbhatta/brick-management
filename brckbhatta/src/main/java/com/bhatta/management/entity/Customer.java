@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 import com.bhatta.management.enums.BrickTypeEnum;
 
-@Table(name="customers")
+@Table(name="customer")
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,4 @@ public class Customer {
 	@Column(name="address")
 	private String address;
 	
-	@Column(name="brick_type")
-	private BrickTypeEnum brickType; 
 }

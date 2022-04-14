@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="super_admin")
 public class SuperAdmin {
@@ -27,6 +30,7 @@ public class SuperAdmin {
 	@Column(name="email")
 	private String email;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	@Column(name="password")
 	private String password;
 
