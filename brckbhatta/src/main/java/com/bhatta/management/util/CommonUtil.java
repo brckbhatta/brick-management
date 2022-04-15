@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommonUtil {
 	
+	@Autowired
 	private JavaMailSender javaMailSender;
 
 	public String generateOtp() {
@@ -25,7 +26,6 @@ public class CommonUtil {
 		MimeMessage msg=javaMailSender.createMimeMessage();
 		MimeMessageHelper helper=new MimeMessageHelper(msg,true);
 		helper.setTo(to);
-		helper.setFrom(from);
 		helper.setSubject(subject);
 		helper.setText(otp);
 		javaMailSender.send(msg);

@@ -15,9 +15,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
+@Data
 public class User {
 	
 	@Id
@@ -39,37 +42,7 @@ public class User {
 	@JsonFormat(pattern = "dd/MM/yyyy")
     private Date updatedOn;
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
-
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
-	}
+	
 	
 	
 
