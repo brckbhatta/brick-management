@@ -1,13 +1,15 @@
 package com.bhatta.management.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,30 +25,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="customer")
-public class Customer implements Serializable{
-	
+@Table(name="brick_details")
+public class BrickDetails {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="customer_id")
-	private String customerId;
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name="brick_id")
+	private BrickMaster brickMaster;
 	
-	@Column(name="first_name")
-	private String firstName;
+	@Column(name="brick_quantity")
+	private Long brickQuantity;
 	
-	@Column(name="last_name")
-	private String lastName;
+	@Column(name="brick_price")
+	private Double brickPrice;
 	
-	@Column(name="email")
-	private String email;
-	
-	@Column(name="phone_number")
-	private String phoneNumber;
-	
-	@Column(name="address")
-	private String address;
+	@Column(name="account_id")
+	private Long accountId;
 	
 	@Column(nullable = false ,updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -58,12 +55,6 @@ public class Customer implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	@JsonFormat(pattern= "dd/MM/yyyy")
-	private Date updatedOn; 
-	
-	@Column(name="active", columnDefinition = "boolean default true")
-	private Boolean active;
-	
-	@Column(name="account_id")
-	private Long accountId;
-	
+	private Date updatedOn;
+
 }
