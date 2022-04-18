@@ -1,15 +1,16 @@
 package com.bhatta.management.entity;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,32 +19,29 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 @Setter
 @Entity
-@Table(name="brick_details")
-public class BrickDetails {
+@Table(name="designation")
+public class Designation implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name="designation_id")
+	private Long designationId;
 	
-	@ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn(name="brick_id")
-	private BrickMaster brickMaster;
-	
-	@Column(name="brick_quantity")
-	private Long brickQuantity;
-	
-	@Column(name="brick_price")
-	private Double brickPrice;
+	@Column(name="designation_name")
+	private String designationName;
 	
 	@Column(name="account_id")
 	private Long accountId;
+	
+	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "designation")
+	List<Employee> employees;
 	
 	@Column(nullable = false ,updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -55,6 +53,6 @@ public class BrickDetails {
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	@JsonFormat(pattern= "dd/MM/yyyy")
-	private Date updatedOn;
-
+	private Date updatedOn; 
+	
 }

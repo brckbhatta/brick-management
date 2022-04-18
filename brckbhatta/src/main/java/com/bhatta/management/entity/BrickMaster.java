@@ -21,6 +21,11 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.bhatta.management.enums.BrickTypeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name="brick_master")
 public class BrickMaster implements Serializable {
@@ -53,54 +58,4 @@ public class BrickMaster implements Serializable {
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "brickMaster")
 	private List<BrickDetails> brickDetails;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
-	}
-
-	public String getBrickName() {
-		return brickName;
-	}
-
-	public void setBrickName(String brickName) {
-		this.brickName = brickName;
-	}
-
-	public BrickTypeEnum getBrickType() {
-		return brickType;
-	}
-
-	public void setBrickType(BrickTypeEnum brickType) {
-		this.brickType = brickType;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
-
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
-	}
-	
-	
-	
 }
