@@ -29,24 +29,24 @@ public class LocationController {
 	private LocationService locationService;
 	
 	@PostMapping
-	public ResponseEntity<Object> savedetails(@RequestBody Location location) throws BrickBhattaException{
+	public ResponseEntity<Object> saveLocation(@RequestBody Location location) throws BrickBhattaException{
 		try {
 			Location addlocation=locationService.save(location);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(addlocation,BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveLocation()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveLocation()", e.getMessage())));
 		}
 	}
 	
 	@GetMapping
-	public ResponseEntity<Object> getAll(){
+	public ResponseEntity<Object> getAllLocation(){
 		try {
 			List<Location> locationList=locationService.getAll();
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(locationList,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAll", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAllLocation()", e.getMessage())));
 		}
 	}
 	
@@ -56,29 +56,29 @@ public class LocationController {
 			Location location=locationService.getByEmail(email);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(location,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail()", e.getMessage())));
 		}
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody Location location) throws BrickBhattaException{
+	public ResponseEntity<Object> updateLocation(@PathVariable Long id,@RequestBody Location location) throws BrickBhattaException{
 		try {
 			Location locationDetails=locationService.update(id,location);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(locationDetails,BrickBhattaConstant.SUCCESS,null));
 		}catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("update", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("updateLocation()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("update", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("updateLocation()", e.getMessage())));
 		}
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id){
+	public ResponseEntity<Object> deleteLocation(@PathVariable Long id){
 		try {
 			String msg=locationService.delete(id);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(msg,BrickBhattaConstant.SUCCESS,null));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("delete", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("deleteLocation()", e.getMessage())));
 		}
 	}
 

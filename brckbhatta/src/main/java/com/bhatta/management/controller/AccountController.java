@@ -39,7 +39,7 @@ public class AccountController {
 			Boolean verify=accountService.verifyOtp(otp);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(verify,BrickBhattaConstant.SUCCESS,null));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("verifyOtp", e.getMessage())));
 		}
 	}
 }

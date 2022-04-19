@@ -29,24 +29,24 @@ public class SuperAdminController {
 	private SuperAdminService adminService;
   
 	@PostMapping
-	public ResponseEntity<Object> savedetails(@RequestBody SuperAdmin superAdmin) throws BrickBhattaException{
+	public ResponseEntity<Object> saveSuperAdmin(@RequestBody SuperAdmin superAdmin) throws BrickBhattaException{
 		try {
 			SuperAdmin superadmin=adminService.save(superAdmin);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(superadmin,BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveSuperAdmin()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveSuperAdmin()", e.getMessage())));
 		}
 	}
 	
 	@GetMapping
-	public ResponseEntity<Object> getAll(){
+	public ResponseEntity<Object> getAllSuperAdmin(){
 		try {
 			List<SuperAdmin> superadminList=adminService.getAll();
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(superadminList,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAll", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAllSuperAdmin()", e.getMessage())));
 		}
 	}
 	
@@ -56,29 +56,29 @@ public class SuperAdminController {
 			SuperAdmin superadmin=adminService.getByEmail(email);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(superadmin,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail()", e.getMessage())));
 		}
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody SuperAdmin superAdminDetails) throws BrickBhattaException{
+	public ResponseEntity<Object> updateSuperAdmin(@PathVariable Long id,@RequestBody SuperAdmin superAdminDetails) throws BrickBhattaException{
 		try {
 			SuperAdmin superadmin=adminService.update(id,superAdminDetails);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(superadmin,BrickBhattaConstant.SUCCESS,null));
 		}catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("update", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("updateSuperAdmin()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("update", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("updateSuperAdmin()", e.getMessage())));
 		}
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id){
+	public ResponseEntity<Object> deleteSuperAdmin(@PathVariable Long id){
 		try {
 			String msg=adminService.delete(id);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(msg,BrickBhattaConstant.SUCCESS,null));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("delete", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("deleteSuperAdmin()", e.getMessage())));
 		}
 	}
 }
