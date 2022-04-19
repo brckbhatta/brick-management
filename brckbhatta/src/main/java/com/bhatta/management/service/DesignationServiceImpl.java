@@ -72,9 +72,14 @@ public class DesignationServiceImpl implements DesignationService{
 	@Override
 	public Designation update(Long id, Designation designation) throws BrickBhattaException {
 		try {
-			
+			Optional<Designation> existdesignation= designationRepository.findById(id);
+			if(Objects.nonNull(existdesignation)) {
+				existdesignation.get().setDesignationName(designation.getDesignationName());
+				existdesignation.get().setEmployees(designation.getEmployees());
+				 return designationRepository.save(existdesignation.get());
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return null;
 	}
