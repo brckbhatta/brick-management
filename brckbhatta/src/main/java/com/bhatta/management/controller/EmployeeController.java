@@ -29,24 +29,24 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@PostMapping
-	public ResponseEntity<Object> savedetails(@RequestBody Employee employee) throws BrickBhattaException{
+	public ResponseEntity<Object> saveEmployee(@RequestBody Employee employee) throws BrickBhattaException{
 		try {
 			Employee addEmployee=employeeService.save(employee);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(addEmployee,BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveEmployee()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("saveEmployee()", e.getMessage())));
 		}
 	}
 	
 	@GetMapping
-	public ResponseEntity<Object> getAll(){
+	public ResponseEntity<Object> getAllEmployee(){
 		try {
 			List<Employee> employeeList=employeeService.getAll();
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(employeeList,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAll", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getAllEmployee()", e.getMessage())));
 		}
 	}
 	
@@ -56,29 +56,29 @@ public class EmployeeController {
 			Employee employeeDetails=employeeService.getByEmail(email);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(employeeDetails,BrickBhattaConstant.SUCCESS,null));
 		} catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("getByEmail()", e.getMessage())));
 		}
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@PathVariable Long id,@RequestBody Employee employee) throws BrickBhattaException{
+	public ResponseEntity<Object> updateEmployee(@PathVariable Long id,@RequestBody Employee employee) throws BrickBhattaException{
 		try {
 			Employee employeeDetails=employeeService.update(id,employee);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(employeeDetails,BrickBhattaConstant.SUCCESS,null));
 		}catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("update", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("updateEmployee()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("update", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("updateEmployee()", e.getMessage())));
 		}
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id){
+	public ResponseEntity<Object> deleteEmployee(@PathVariable Long id){
 		try {
 			String msg=employeeService.delete(id);
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(msg,BrickBhattaConstant.SUCCESS,null));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("delete", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null,BrickBhattaConstant.FAILURE, new Error("deleteEmployee()", e.getMessage())));
 		}
 	}
 

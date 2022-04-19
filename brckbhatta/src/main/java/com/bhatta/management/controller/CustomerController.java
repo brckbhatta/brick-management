@@ -42,7 +42,7 @@ public class CustomerController {
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(
 					customerService.getAllCustomer(),BrickBhattaConstant.SUCCESS,null));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("getAllCustomer", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("getAllCustomer()", e.getMessage())));
 		}
 	}
 
@@ -52,9 +52,9 @@ public class CustomerController {
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(
 					customerService.getCustomerById(id),BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("getById()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("getById()", e.getMessage())));
 		}
 	}
 	
@@ -65,9 +65,9 @@ public class CustomerController {
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(
 					customerService.editCustomer(id,customerDetails),BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("editCustomer()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("editCustomer()", e.getMessage())));
 		}
 	}
 	
@@ -79,9 +79,9 @@ public class CustomerController {
 			return ResponseEntity.ok(ResponseUtil.populateResponseObject(
 					customerService.deleteCustomer(id),BrickBhattaConstant.SUCCESS,null));
 		} catch(BrickBhattaException ex) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", ex.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("deleteCustomer()", ex.getMessage())));
 		}catch (Exception e) {
-			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("savedetails", e.getMessage())));
+			return ResponseEntity.ok(ResponseUtil.populateResponseObject(null, BrickBhattaConstant.FAILURE, new Error("deleteCustomer()", e.getMessage())));
 		}
 	}
 	
