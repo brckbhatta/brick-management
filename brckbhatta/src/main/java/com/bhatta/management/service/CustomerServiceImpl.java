@@ -32,7 +32,6 @@ public class CustomerServiceImpl implements CustomerService {
 		Optional<Customer> existingCustomer=customerRepository.findById(id);
 		if (existingCustomer.isPresent()) {
 			Customer customer = existingCustomer.get();
-			customer.setCustomerId(customerDetails.getCustomerId());
 			customer.setFirstName(customerDetails.getFirstName());
 			customer.setLastName(customerDetails.getLastName());
 			customer.setEmail(customerDetails.getEmail());

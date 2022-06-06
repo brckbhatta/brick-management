@@ -8,4 +8,8 @@ public interface LedgerMasterService {
 
 	List<LedgerMaster> getAll();
 
+	LedgerMaster saveLedgerData(LedgerMaster ledgerMasterDetails);
+
+	LedgerMaster getByCustomerId(Long customerId);
+
 }

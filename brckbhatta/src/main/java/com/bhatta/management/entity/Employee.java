@@ -58,9 +58,13 @@ public class Employee implements Serializable {
 	//@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Designation designation;
 	
+//	@ManyToOne(fetch= FetchType.LAZY)
+//	@JoinColumn(name="location_id")
+//	private Location location;
+	
 	@ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn(name="location_id")
-	private Location location;
+	@JoinColumn(name="emp_firm_id")
+	private FirmMaster firmMaster;
 	
 	@Column(name="account_id")
 	private Long accountId;
