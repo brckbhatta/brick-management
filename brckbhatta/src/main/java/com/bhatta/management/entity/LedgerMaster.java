@@ -1,9 +1,8 @@
 package com.bhatta.management.entity;
 
-import java.io.Serializable;
+import java.time.YearMonth;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,34 +22,25 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
+
 
 @Getter
 @Setter
 @Entity
-@Table(name = "customer")
-public class Customer implements Serializable {
+@Table(name = "ledger_master")
+public class LedgerMaster {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
-	private Long customerId;
+	@Column(name = "ledger_id")
+	private Long ledgerId;
 
-	@Column(name = "first_name")
-	private String firstName;
+	@Column(name = "last_year_amount")
+	private Double lastYearAmount;
 
-	@Column(name = "last_name")
-	private String lastName;
-
-	@Column(name = "email")
-	private String email;
-
-	@Column(name = "phone_number")
-	private String phoneNumber;
-
-	@Column(name = "address")
-	private String address;
+	@Column(name = "year_month")
+	private YearMonth yearMonth;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,17 +54,15 @@ public class Customer implements Serializable {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date updatedOn;
 
-	@Column(name = "active", columnDefinition = "boolean default true")
-	private Boolean active;
-
-	@Column(name = "account_id")
+	@Column(name = "account_id")	
 	private Long accountId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "firm_id")
 	private FirmMaster firmMaster;
 
-	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "customer")
-	private LedgerMaster ledgerMaster;	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 
 }

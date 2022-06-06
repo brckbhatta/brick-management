@@ -39,7 +39,7 @@ public class LocationServiceImpl implements LocationService{
 	@Override
 	public Location getByEmail(String email) {
 		try {
-			return locationRepository.findbyEmail(email);
+			//return locationRepository.findbyEmail(email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

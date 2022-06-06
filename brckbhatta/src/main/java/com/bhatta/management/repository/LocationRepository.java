@@ -7,6 +7,6 @@ import com.bhatta.management.entity.Location;
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Long> {
 
-	Location findbyEmail(String email);
+	//Location findByEmail(String email);
 
 }
