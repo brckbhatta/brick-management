@@ -37,6 +37,8 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
 	private Long customerId;
+	
+	private String custId;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -75,7 +77,7 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "firm_id")
 	private FirmMaster firmMaster;
 
-	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "customer")
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
 	private LedgerMaster ledgerMaster;
 	
 	

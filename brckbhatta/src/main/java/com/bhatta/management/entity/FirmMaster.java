@@ -62,10 +62,10 @@ public class FirmMaster {
 	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "firmMaster")
 	private List<Customer> customer;
 	
-	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "firmMaster")
-	private List<Employee> employees;
-	
-	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "firmMaster")
-	private List<Designation> designations;
+//	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "firmMaster")
+//	private List<Employee> employees;
+//	
+//	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "firmMaster")
+//	private List<Designation> designations;
 	
 }
