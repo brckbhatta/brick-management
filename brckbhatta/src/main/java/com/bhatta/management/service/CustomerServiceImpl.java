@@ -18,51 +18,75 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer saveCustomer(Customer customerDetails) {
-		return customerRepository.save(customerDetails);
+		try {
+			return customerRepository.save(customerDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public List<Customer> getAllCustomer() {
-		return customerRepository.findAll();
+		try {
+			return customerRepository.findAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
 	public Customer editCustomer(Long id, Customer customerDetails) throws BrickBhattaException {
-		
-		Optional<Customer> existingCustomer=customerRepository.findById(id);
-		if (existingCustomer.isPresent()) {
-			Customer customer = existingCustomer.get();
-			customer.setFirstName(customerDetails.getFirstName());
-			customer.setLastName(customerDetails.getLastName());
-			customer.setEmail(customerDetails.getEmail());
-			customer.setAddress(customerDetails.getAddress());
-			customer.setPhoneNumber(customerDetails.getPhoneNumber());
-			customer.setActive(customerDetails.getActive());
-			return customerRepository.save(customer);
-		}else {
-			throw new BrickBhattaException("Customer Not Exist");
+		try {
+			Optional<Customer> existingCustomer=customerRepository.findById(id);
+			if (existingCustomer.isPresent()) {
+				Customer customer = existingCustomer.get();
+				customer.setFirstName(customerDetails.getFirstName());
+				customer.setLastName(customerDetails.getLastName());
+				customer.setEmail(customerDetails.getEmail());
+				customer.setAddress(customerDetails.getAddress());
+				customer.setPhoneNumber(customerDetails.getPhoneNumber());
+				customer.setActive(customerDetails.getActive());
+				return customerRepository.save(customer);
+			}else {
+				throw new BrickBhattaException("Customer Not Exist");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
 	public String deleteCustomer(Long id) throws BrickBhattaException {
-		Optional<Customer> existingCustomer=customerRepository.findById(id);
-		if (existingCustomer.isPresent()) {
-			 customerRepository.deleteById(id);
-			 return "Customer Delete Successfully";
-		}else {
-			throw new BrickBhattaException("Customer Not Exist");
+		try {
+			Optional<Customer> existingCustomer = customerRepository.findById(id);
+			if (existingCustomer.isPresent()) {
+				customerRepository.deleteById(id);
+				return "Customer Delete Successfully";
+			} else {
+				throw new BrickBhattaException("Customer Not Exist");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
 	public Customer getCustomerById(Long id) throws BrickBhattaException {
-		Optional<Customer> existingCustomer=customerRepository.findById(id);
-		if (existingCustomer.isPresent()) {
-			return  existingCustomer.get();
-		}else {
-			throw new BrickBhattaException("Customer Not Exist");
+		try {
+			Optional<Customer> existingCustomer = customerRepository.findById(id);
+			if (existingCustomer.isPresent()) {
+				return existingCustomer.get();
+			} else {
+				throw new BrickBhattaException("Customer Not Exist");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 }
