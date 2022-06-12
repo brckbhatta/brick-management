@@ -76,6 +76,8 @@ public class Customer implements Serializable {
 	private FirmMaster firmMaster;
 
 	@OneToOne(cascade = CascadeType.REMOVE, mappedBy = "customer")
-	private LedgerMaster ledgerMaster;	
+	private LedgerMaster ledgerMaster;
+	
+	
 
 }

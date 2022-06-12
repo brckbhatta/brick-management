@@ -40,8 +40,8 @@ public class FirmMaster {
 	@Column(name="firm_id")
 	private Long firmId;
 	
+	@Column(name="firm_name")
 	private String firmName;
-	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
