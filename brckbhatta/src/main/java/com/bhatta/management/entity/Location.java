@@ -53,8 +53,8 @@ public class Location {
 	@Column(name="account_id")
 	private Long accountId;
 	
-	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "location")
-	List<Employee> employees;
+//	@OneToMany(cascade = CascadeType.REMOVE,mappedBy = "location")
+//	List<Employee> employees;
 	
 	@Column(nullable = false ,updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)

@@ -2,6 +2,7 @@ package com.bhatta.management.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -78,7 +79,12 @@ public class Customer implements Serializable {
 	private FirmMaster firmMaster;
 
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
-	private LedgerMaster ledgerMaster;
+	private List<LedgerMaster> ledgerMaster;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
+	private List<TransactionInfo> transactionInfo;
+	
+	
 	
 	
 

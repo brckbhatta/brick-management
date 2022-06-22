@@ -9,7 +9,7 @@ import com.bhatta.management.entity.LedgerMaster;
 @Repository
 public interface LedgerMasterRepository extends JpaRepository<LedgerMaster, Long> {
 
-	@Query(value="select l from LedgerMaster where l.customer.customerId =:customerId ")
+	@Query(value="select * from LedgerMaster l where l.customer_id =:customerId " ,nativeQuery = true)
 	LedgerMaster findByCustomerId(Long customerId);
 
 }

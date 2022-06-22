@@ -1,5 +1,8 @@
 package com.bhatta.management.entity;
 
+import java.io.Serializable;
+import java.time.Month;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.Date;
 
@@ -16,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -29,7 +34,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ledger_master")
-public class LedgerMaster {
+public class LedgerMaster implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,8 +44,11 @@ public class LedgerMaster {
 	@Column(name = "last_year_amount")
 	private Double lastYearAmount;
 
-	@Column(name = "year_month")
-	private YearMonth yearMonth;
+	@Column(name = "year")
+	private Year year;
+	
+	@Column(name = "month")
+	private Month month;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -62,7 +70,7 @@ public class LedgerMaster {
 	private FirmMaster firmMaster;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "cust_id")
 	private Customer customer;
 
 }

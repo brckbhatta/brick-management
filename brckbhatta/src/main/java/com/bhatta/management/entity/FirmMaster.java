@@ -1,5 +1,6 @@
 package com.bhatta.management.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,7 +35,7 @@ import lombok.Setter;
 @Entity
 @Table(name="firm_master")
 @EntityListeners(AuditingEntityListener.class)
-public class FirmMaster {
+public class FirmMaster implements Serializable {
 
 	
 	@Id
